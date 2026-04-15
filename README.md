@@ -389,3 +389,8 @@ void bridge_tunnel(int client_fd, int server_fd) {
 }
 ```
 #### 完成之后，我们就能正常访问网站了，一个示例视频如下：
+<div align="center">
+  <video src="1.mp4" controls width="600px">
+    您的浏览器不支持视频播放。
+  </video>
+</div>
