@@ -59,7 +59,6 @@ int main(int argc, char **argv)
     struct sockaddr_storage clientaddr;
     pthread_t child_thread;
 
-    /* Check command line args */
     if (argc != 2) {
 	fprintf(stderr, "usage: %s <port>\n", argv[0]);
 	exit(1);
@@ -109,7 +108,7 @@ void doit(int client_fd) {
     char buf1[MAXLINE];
 
     Rio_readinitb(&client_rio, client_fd);
-    if (!Rio_readlineb(&client_rio, buf, MAXLINE))  //line:netp:doit:readrequest
+    if (!Rio_readlineb(&client_rio, buf, MAXLINE))  
         return;
     sscanf(buf, "%s %s %s", method, uri, version);
     printf("Request from Firefox: %s %s\n", method, uri);
@@ -279,8 +278,8 @@ void build_head(char *http_header, char *hostname, char *path, rio_t *client_rio
             "Connection: close\r\n",       // 强制 close
             "Proxy-Connection: close\r\n", // 强制 close
             other_hdr);
-
 }
+
 
 void send_head(int server_fd, char *http_header) {
     Rio_writen(server_fd, http_header, strlen(http_header));
